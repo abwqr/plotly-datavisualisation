@@ -6,8 +6,8 @@ from data import path
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H4('Simple stock plot with adjustable axis'),
-    html.Button("Switch Axis", n_clicks=0, 
+    # html.H4('Simple stock plot with adjustable axis'),
+    html.Button("Button", n_clicks=0, 
                 id='button'),
     dcc.Graph(id="graph"),
 ])
@@ -24,9 +24,10 @@ def display_graph(n_clicks):
     # fig = px.pie(df, values='length', names='type')
     
     # SCATTER PLOT
-    # fig = px.scatter(df, x="country", y="length", size="length", color="country", hover_data=["length"])
-    
-    fig = px.line(df, x="length", y="type", title='Life expectancy in Canada')
+    fig = px.scatter(df, x="country", y="length", size="length", color="country", hover_data=["length"])
+
+    #LINE PLOT
+    # fig = px.line(df, x="length", y="type", title='Life expectancy in Canada')
 
     return fig
 
