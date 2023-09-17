@@ -1,7 +1,7 @@
 from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
 import pandas as pd
-from data import path 
+from data import df 
 
 app = Dash(__name__)
 
@@ -17,16 +17,17 @@ app.layout = html.Div([
     Output("graph", "figure"), 
     Input("button", "n_clicks"))
 def display_graph(n_clicks):
-    df = pd.read_csv(path) # replace with your own data source
-    df = df[:100]
+    # df = pd.read_csv(path) # replace with your own data source
+    # df = df[:100]
 
     # PIE CHART
-    # fig = px.pie(df, values='length', names='type')
+    print(df)
+    fig = px.pie(df, values='timestamp', names='humidity')
     
     # SCATTER PLOT
-    fig = px.scatter(df, x="country", y="length", size="length", color="country", hover_data=["length"])
+    # fig = px.scatter(df, x="country", y="length", size="length", color="country", hover_data=["length"])
 
-    #LINE PLOT
+        
     # fig = px.line(df, x="length", y="type", title='Life expectancy in Canada')
 
     return fig
